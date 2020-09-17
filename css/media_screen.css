@@ -33,6 +33,9 @@
     .group4_text_box{
         width: 80%;
     }
+    .footer_wrap{
+        width: 100%
+    }
 }
 @media screen and (max-width: 800px){
     .group5_text_box_wrap{
