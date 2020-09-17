@@ -78,6 +78,7 @@ header{
     right: 16px;
     width: 100px;
     transition: all .5 ease;
+    display: none;
 }
 .menu_mini_icon{
     position: relative;
