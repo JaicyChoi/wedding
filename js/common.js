@@ -1,3 +1,6 @@
+if(window.NodeList && !NodeList.prototype.forEach)
+    NodeList.prototype.forEach = Array.prototype.forEach;
+
 const nav_wrapper = document.querySelector('.nav_wrapper');
 const menu_mini_icon = document.querySelector('.menu_mini_icon');
 const menu_mini = document.querySelector('.menu_mini');
