@@ -47,22 +47,59 @@ header{
     font-weight: 400;
 }
 .main_menu li{
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    transition: all .1s ease;
+}
+.main_menu li:hover{
+    font-weight: 500;
 }
 .main_menu li:nth-child(3){
     padding: 0;
 }
+.main_menu li:hover:before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    width: 15%;
+    border-bottom: 2px solid black;
+    animation: menu_select .3s linear;
+}
+.main_menu li:hover:after{
+    content: '';
+    position: absolute;
+    right: 50%;
+    bottom: 15px;
+    width: 15%;
+    border-bottom: 2px solid black;
+    animation: menu_select .3s linear;
+}
+.main_menu li:nth-child(3):hover:before, .main_menu li:nth-child(3):hover:after{
+    border-bottom: 0;
+    animation: none;
+}
+@keyframes menu_select{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 15%;
+    }
+}
 .main_menu li a{
     text-decoration: none;
+    padding: 15px;
     color: black;
 }
 .home_mini{
-    position: fixed;
+    position: absolute;
+    top: 23px;
     left: 16px;
     width: 32px;
     height: 32px;
@@ -76,7 +113,7 @@ header{
     opacity: .5;
 }
 .menu_mini_wrap{
-    position: fixed;
+    position: absolute;
     top: 23px;
     right: 16px;
     width: 100px;
@@ -162,12 +199,19 @@ header{
     height: 70px;
     margin-top: 200px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 50px);
     text-align: center;
     letter-spacing: -0.01em;
     font-size: 1.125em;
     line-height: 1.3em;
     font-family: 'Crimson Text', serif;
+    transition: all 1s ease;
+    transition-delay: .3s;
+    opacity: 0;
+}
+.conetent_description.show{
+    opacity: 1;
+    transform: translate(-50%, 0);
 }
 .gallery{
     position: relative;
@@ -191,27 +235,21 @@ header{
     position: relative;
     float: left;
     width: 220px;
-    height: 290px;
     margin-right: 20px;
-    background: url(../images/gallery_img1.png) no-repeat center;
-    background-size: cover;
+    transition-delay: .3s
 }
 .gallery1_wrap div:nth-child(2){
     position: relative;
     float: left;
     width: 220px;
-    height: 290px;
-    background: url(../images/gallery_img2.png) no-repeat center;
-    background-size: cover;
+    transition-delay: .6s;
 }
 .gallery1_wrap div:nth-child(3){
     position: relative;
     float: left;
     width: 460px;
-    height: 290px;
     margin-top: 26px;
-    background: url(../images/gallery_img3.png) no-repeat center;
-    background-size: cover;
+    transition-delay: .9s;
 }
 .gallery2_wrap{
     position: relative;
@@ -222,27 +260,37 @@ header{
     position: relative;
     float: left;
     width: 460px;
-    height: 290px;
     margin-bottom: 26px;
-    background: url(../images/gallery_img6.png) no-repeat center;
-    background-size: cover;
+    transition-delay: 1.2s;
 }
 .gallery2_wrap div:nth-child(2){
     position: relative;
     float: left;
     width: 220px;
-    height: 290px;
     margin-right: 20px;
-    background: url(../images/gallery_img4.png) no-repeat center;
-    background-size: cover;
+    transition-delay: 1.5s;
 }
 .gallery2_wrap div:nth-child(3){
     position: relative;
     float: left;
     width: 220px;
-    height: 290px;
-    background: url(../images/gallery_img5.png) no-repeat center;
-    background-size: cover;
+    transition-delay: 1.8s;
+}
+.gallery1_wrap img, .gallery2_wrap img{
+    position: relative;
+    width: 100%;
+    transition: all 1s ease;
+}
+.gallery1_wrap img:hover, .gallery2_wrap img:hover{
+    transform: scale(1.05);
+}
+.gallery1_wrap div, .gallery2_wrap div{
+    opacity: 0;
+    transition: all 1.5s ease;
+    overflow: hidden;
+}
+.gallery1_wrap div.show, .gallery2_wrap div.show{
+    opacity: 1;
 }
 .group2{
     position: relative;
@@ -251,6 +299,14 @@ header{
     height: 375px;
     background-color: #41746c;
     color: white;
+    transform: translateX(-100%);
+    transition: all .7s ease;
+    transition-delay: .3s;
+    opacity: 0;
+}
+.group2.show{
+    opacity: 1;
+    transform: translateX(0);
 }
 .group2_text_box{
     position: relative;
@@ -263,15 +319,49 @@ header{
     transform: translateX(-50%);
     text-align: center;
 }
-.group2_text_box:after{
+.group2_text_box.show:before{
     content: '';
-    width: 2px;
-    height: 75%;
+    height: calc(75%/2);
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
+    border-left: 2px solid white;
+    transform: translateX(-50%);
+    animation: group2_line 1s linear;
+    animation-delay: .3s;
+    opacity: 1;
+}
+.group2_text_box.show:after{
+    content: '';
+    height: calc(75%/2);
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    border-left: 2px solid white;
+    transform: translateX(-50%);
+    animation: group2_line 1s linear;
+    animation-delay: .3s;
+    opacity: 1;
+}
+@keyframes group2_line{
+    0%{
+        height: 0;
+        opacity: 0;
+    }
+    100%{
+        height: calc(75%/2);
+        opacity: 1;
+    }
+}
+@keyframes group2_line_480px{
+    0%{
+        width: 0;
+        opacity: 0;
+    }
+    100%{
+        width: calc(75%/2);
+        opacity: 1;
+    }
 }
 .left_wrapper, .right_wrapper{
     width: 50%;
@@ -282,6 +372,17 @@ header{
 }
 .left, .right{
     width: 300px;
+    opacity: 0;
+    transition: all .8s ease;
+    transition-delay: 1s;
+    transform: translateY(30px);
+}
+.right{
+    transition-delay: 1.5s;
+}
+.left.show, .right.show{
+    transform: translateY(0);
+    opacity: 1;
 }
 .group2_title{
     font-family: 'Crimson Text', serif;
@@ -308,7 +409,13 @@ header{
     margin-bottom: 250px;
     transform: translateX(-50%);
     width: 625px;
+    opacity: 0;
     text-align: center;
+    transition: all 1s ease;
+    transition-delay: .3s;
+}
+.group3_text_box.show{
+    opacity: 1;
 }
 .group3_title{
     font-family: 'Crimson Text', serif;
@@ -346,6 +453,12 @@ header{
     float: left;
     width: 630px;
     height: 380px;
+    opacity: 0;
+    transition: all 1.7s ease;
+    transition-delay: .2s;
+}
+.wedding_img.show{
+    opacity: 1;
 }
 .wedding li:nth-child(1) .wedding_img{
     background: url(../images/wedding_img1.png) no-repeat center;
@@ -367,6 +480,15 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: translateX(-100px);
+    transition: all 1.3s ease;
+    transition-delay: .5s;
+    opacity: 0;
+    z-index: -1;
+}
+.wedding_text_box_wrap.show{
+    opacity: 1;
+    transform: translateX(0);
 }
 .wedding_text_box{
     position: relative;
@@ -396,6 +518,24 @@ header{
     justify-content: center;
     align-items: center;
     background-color: #41746c;
+    transform: translateX(-100%);
+    transition: all .7s ease;
+    transition-delay: .3s;
+    opacity: 0;
+}
+.group4.show{
+    opacity: 1;
+    transform: translateX(0);
+}
+@keyframes show_section{
+    0%{
+        opacity: 0;
+        width: 0;
+    }
+    100%{
+        opacity: 1;
+        width: 100%;
+    }
 }
 .group4_text_box{
     position: relative;
@@ -404,6 +544,14 @@ header{
     font-family: 'Heebo', sans-serif;
     text-align: center;
     font-size: 1.125em;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.3s ease;
+    transition-delay: .9s;
+}
+.group4_text_box.show{
+    transform: translateY(0);
+    opacity: 1;
 }
 .group4_text{
     line-height: 1.5em;
@@ -430,7 +578,14 @@ header{
     height: 350px;
     background: url(../images/logo.png) no-repeat center;
     background-size: contain;
-
+    transform: scale(0.5);
+    transition: all 1.5s ease;
+    transition-delay: .3s;
+    opacity: 0;
+}
+.group5_logo.scale{
+    opacity: 1;
+    transform: scale(1);
 }
 .group5_text_box_wrap2{
     position: absolute;
@@ -445,14 +600,52 @@ header{
     position: relative;
     float: left;
     width: 360px;
+    transform: translateY(50px);
+    transition: all 1.3s ease;
+    transition-delay: .7s;
+    opacity: 0;
+}
+.group5_text_box.show{
+    opacity: 1;
+    transform: translateY(0);
 }
 .group5_title{
+    position: relative;
     text-align: center;
     font-family: 'Crimson Text', serif;
     font-size: 1.5em;
     font-weight: 600;
-    text-decoration: underline;
     margin-bottom: 30px;
+}
+.group5_title.show:before{
+    content: '';
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    width: 25%;
+    border-bottom: 2px solid black;
+    animation: group5_title_deco 1.3s linear;
+    animation-delay: .7s;
+}
+.group5_title.show:after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 25%;
+    border-bottom: 2px solid black;
+    animation: group5_title_deco 1.3s linear;
+    animation-delay: .7s;
+}
+@keyframes group5_title_deco{
+    0%{
+        opacity: 0;
+        width: 0;
+    }
+    100%{
+        opacity: 1;
+        width: 25%;
+    }
 }
 .group5_description{
     text-align: justify;
@@ -460,7 +653,7 @@ header{
     font-size: 1.125em;
     line-height: 1.125em;
 }
-.group5_img{
+.group5_img_wrapper{
     position: relative;
     clear: both;
     float: left;
@@ -468,9 +661,61 @@ header{
     transform: translateX(-50%);
     width: 790px;
     height: 490px;
+    margin-bottom: 540px;
+    overflow: hidden;
+}
+.group5_img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background: url(../images/last_img.png) no-repeat center;
     background-size: cover;
-    margin-bottom: 540px;
+}
+.group5_img_shader{
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: transparent;
+    border: 470px solid #f3f3f3;
+    transition: all 2s ease-out;
+}
+.group5_img_shader.whip{
+    width: 1000px;
+    height: 1000px;
+}
+.top_icon_wrapper{
+    position: fixed;
+    width: 1200px;
+    height: 35px;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.go_top{
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    right: 0;
+    background: url(../images/go_top.png) no-repeat center;
+    background-size: contain;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all .5s ease;
+}
+.go_top.show{
+    opacity: .7;
+    transform: translateY(0);
+}
+.go_top:hover{
+    opacity: 1;
 }
 footer{
     position: relative;
