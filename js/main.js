@@ -5,12 +5,13 @@ const nav_wrapper = document.querySelector('.nav_wrapper');
 const menu_mini_icon = document.querySelector('.menu_mini_icon');
 const menu_mini = document.querySelector('.menu_mini');
 const menu_mini_li = document.querySelectorAll('.menu_mini>li');
-
 let menu_click = false;
 
 menu_mini_icon.addEventListener('click', function(){
     if( menu_click === false ){
         menu_click = true;
+        if( nav_wrapper.classList.value.indexOf('scroll') > 0 )
+            nav_wrapper.classList.add('hover');
         menu_mini_icon.classList.add('show');
         menu_mini.classList.add('show');
         menu_mini_li.forEach(function(li){
@@ -19,6 +20,8 @@ menu_mini_icon.addEventListener('click', function(){
     }
     else{
         menu_click = false;
+        if( nav_wrapper.classList.value.indexOf('scroll') > 0 )
+            nav_wrapper.classList.remove('hover');
         menu_mini_icon.classList.remove('show');
         menu_mini.classList.remove('show');
         menu_mini_li.forEach(function(li){
@@ -44,6 +47,11 @@ const group5_logo = document.querySelector('.group5_logo');
 const group5_text_box = document.querySelector('.group5_text_box');
 const group5_title = document.querySelector('.group5_title');
 const group5_img_shader = document.querySelector('.group5_img_shader');
+const footer = document.querySelector('footer');
+const footer_logo = document.querySelector('.footer_logo');
+const footer_text = document.querySelector('.footer_text');
+const sign_up_box = document.querySelector('.sign_up_box');
+const social_li = document.querySelectorAll('.social>li');
 
 window.addEventListener('scroll', function(){
     //show move top btn
@@ -108,6 +116,21 @@ window.addEventListener('scroll', function(){
     //show group5 image
     if( window.pageYOffset >= 5500 )
         group5_img_shader.classList.add('whip');
+
+    //show footer
+    if( window.pageYOffset >= 6500 ){
+        footer.classList.add('show');
+        footer_logo.classList.add('show');
+    }
+    if( window.pageYOffset >= 6600 ){
+        footer_text.classList.add('show');
+        sign_up_box.classList.add('show');
+    }
+    if( window.pageYOffset >= 6700 )
+        social_li.forEach(function(li){
+            li.classList.add('show');
+        });
+
 });
 go_top.addEventListener('click', function(){
     document.querySelector('header').scrollIntoView({behavior:'smooth'});

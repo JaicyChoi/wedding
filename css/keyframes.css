@@ -1,0 +1,48 @@
+@keyframes menu_select{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 15%;
+    }
+}
+@keyframes group2_line{
+    0%{
+        height: 0;
+        opacity: 0;
+    }
+    100%{
+        height: calc(75%/2);
+        opacity: 1;
+    }
+}
+@keyframes group2_line_480px{
+    0%{
+        width: 0;
+        opacity: 0;
+    }
+    100%{
+        width: calc(75%/2);
+        opacity: 1;
+    }
+}
+@keyframes show_section{
+    0%{
+        opacity: 0;
+        width: 0;
+    }
+    100%{
+        opacity: 1;
+        width: 100%;
+    }
+}
+@keyframes group5_title_deco{
+    0%{
+        opacity: 0;
+        width: 0;
+    }
+    100%{
+        opacity: 1;
+        width: 25%;
+    }
+}
