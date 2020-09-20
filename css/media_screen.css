@@ -11,7 +11,7 @@
     .main_menu{
         width: 100%;
     }
-    .main_visual{
+    .main_visual_wrapper{
         height: 675px;
     }
     .gallery{ 
@@ -86,7 +86,7 @@
     .menu_mini_wrap{
         display: block;
     }
-    .main_visual{
+    .main_visual_wrapper{
         height: 575px;
     }
     .conetent_description{
@@ -107,7 +107,7 @@
     }
 }
 @media screen and (max-width: 480px){
-    .main_visual{
+    .main_visual_wrapper{
         height: 375px;
     }
     .gallery{ 

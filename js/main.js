@@ -5,8 +5,27 @@ const nav_wrapper = document.querySelector('.nav_wrapper');
 const menu_mini_icon = document.querySelector('.menu_mini_icon');
 const menu_mini = document.querySelector('.menu_mini');
 const menu_mini_li = document.querySelectorAll('.menu_mini>li');
+const main_visual = document.querySelectorAll('.main_visual');
+const progress_bar = document.querySelectorAll('.progress_bar');
+let interval = 3000;
+let visual_index = 0;
 let menu_click = false;
+let progress_bar_before = document.head.appendChild(document.createElement('style'));
 
+//show main visual and progress bar
+main_visual[visual_index].classList.add('show');
+progress_bar_before.innerHTML = '.progress_bar:nth-child('+ ( visual_index + 1 ) +'):before{ background: rgba(255, 255, 255, .75); animation: move_progress 3s infinite;}';
+let show_main_visual = setInterval(show_next, interval);
+function show_next(){
+    main_visual[visual_index].classList.remove('show');
+    progress_bar_before.innerHTML = '.progress_bar:nth-child('+ ( visual_index + 1 ) +'):before{ background: transparent; animation: none;}';
+    visual_index++;
+    if( visual_index >= main_visual.length ) visual_index = 0;
+    main_visual[visual_index].classList.add('show');
+    progress_bar_before.innerHTML = '.progress_bar:nth-child('+ ( visual_index + 1 ) +'):before{ background: rgba(255, 255, 255, .75); animation: move_progress 3s infinite;}';
+}
+
+//mini menu control
 menu_mini_icon.addEventListener('click', function(){
     if( menu_click === false ){
         menu_click = true;
@@ -30,6 +49,7 @@ menu_mini_icon.addEventListener('click', function(){
     }
 });
 
+const indicator = document.querySelector('.indicator');
 const go_top = document.querySelector('.go_top');
 const conetent_description = document.querySelector('.conetent_description');
 const gallery1_div = document.querySelectorAll('.gallery1_wrap>div');
@@ -61,8 +81,10 @@ window.addEventListener('scroll', function(){
         go_top.classList.remove('show');
 
     //show group1 text
-    if( window.pageYOffset >= 130 )
+    if( window.pageYOffset >= 130 ){
         conetent_description.classList.add('show');
+        indicator.classList.add('hide');
+    }
 
     //fix navigator and show gallery images
     if( window.pageYOffset >= 200){
@@ -132,8 +154,8 @@ window.addEventListener('scroll', function(){
         });
 
 });
+
+//top button control
 go_top.addEventListener('click', function(){
     document.querySelector('header').scrollIntoView({behavior:'smooth'});
 });
-
-//Add footer animation
