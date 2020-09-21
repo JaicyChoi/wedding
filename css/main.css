@@ -233,6 +233,7 @@ header{
     height: 40px;
     bottom: 25px;
     left: 50%;
+    transform: translate(-50%, 0);
     background: url(../images/indicator.png) no-repeat center;
     background-size: contain;
     transition: all .5s ease;
@@ -251,7 +252,7 @@ header{
 }
 .indicator.hide{
     opacity: 0;
-    transform: translateY(50px);
+    transform: translate(-50%, 50px);
     animation: hide_indicator .7s linear;
 }
 .group1{

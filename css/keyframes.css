@@ -48,21 +48,21 @@
 }
 @keyframes indicator{
     0%, 100%{
-        transform: translateY(-7px)
+        transform: translate(-50%, -7px)
     }
     50%{
-        transform: translateY(7px);
+        transform: translate(-50%, 7px);
         opacity: .15;
     }
 }
 @keyframes hide_indicator{
     0%{
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(-50%, 0);
     }
     100%{
         opacity: 0;
-        transform: translateY(50px);
+        transform: translate(-50%, 50px);
     }
 }
 @keyframes move_progress{
