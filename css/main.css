@@ -193,7 +193,7 @@ header{
     background-size: cover;
 }
 .main_visual:nth-child(2){
-    background: url(../images/top_img2.jpg) no-repeat center;
+    background: url(../images/top_img2.jpg) no-repeat center bottom;
     background-size: cover;
 }
 .main_visual:nth-child(3){

@@ -1,3 +1,4 @@
+//forEach for IE
 if(window.NodeList && !NodeList.prototype.forEach)
     NodeList.prototype.forEach = Array.prototype.forEach;
 
@@ -29,7 +30,7 @@ function show_next(){
 menu_mini_icon.addEventListener('click', function(){
     if( menu_click === false ){
         menu_click = true;
-        if( nav_wrapper.classList.value.indexOf('scroll') > 0 )
+        if( nav_wrapper.classList[1] === 'scroll' )
             nav_wrapper.classList.add('hover');
         menu_mini_icon.classList.add('show');
         menu_mini.classList.add('show');
@@ -39,7 +40,7 @@ menu_mini_icon.addEventListener('click', function(){
     }
     else{
         menu_click = false;
-        if( nav_wrapper.classList.value.indexOf('scroll') > 0 )
+        if( nav_wrapper.classList[1] === 'scroll' )
             nav_wrapper.classList.remove('hover');
         menu_mini_icon.classList.remove('show');
         menu_mini.classList.remove('show');
