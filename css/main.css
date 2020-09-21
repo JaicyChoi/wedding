@@ -4,6 +4,13 @@
 body{
     background-color: #f3f3f3;
 }
+.hide{
+    width: 1px;
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    position: absolute;
+}
 header{
     position: relative;
     width: 100%;
