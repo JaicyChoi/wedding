@@ -156,7 +156,6 @@ window.addEventListener('scroll', function(){
     //     social_li.forEach(function(li){
     //         li.classList.add('show');
     //     });
-
 });
 
 //top button control
