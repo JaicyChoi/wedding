@@ -148,11 +148,14 @@ window.addEventListener('scroll', function(){
     if( window.pageYOffset >= 6600 ){
         footer_text.classList.add('show');
         sign_up_box.classList.add('show');
-    }
-    if( window.pageYOffset >= 6700 )
         social_li.forEach(function(li){
             li.classList.add('show');
         });
+    }
+    // if( window.pageYOffset >= 6650 )
+    //     social_li.forEach(function(li){
+    //         li.classList.add('show');
+    //     });
 
 });
 

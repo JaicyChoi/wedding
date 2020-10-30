@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
 
 body{
+    position: relative;
+    float: left;
     background-color: #f3f3f3;
 }
 .hide{
@@ -725,8 +727,7 @@ header{
 .top_icon_wrapper{
     position: fixed;
     width: 1200px;
-    height: 35px;
-    bottom: 16px;
+    bottom: 55px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
